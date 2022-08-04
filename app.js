@@ -36,6 +36,14 @@ function getMealList(){
     })
 }
 
-function getMealRecipe(){
-    
+function getMealRecipe(event){
+    event.preventDefault();
+    if(event.target.classList.contains('recipe-btn')){
+        let mealItem = event.target.parentElement.parentElement;
+        fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        })
+    }
 }
